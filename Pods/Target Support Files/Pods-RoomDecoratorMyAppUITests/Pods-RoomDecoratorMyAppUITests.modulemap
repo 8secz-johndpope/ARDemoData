@@ -1,0 +1,6 @@
+framework module Pods_RoomDecoratorMyAppUITests {
+  umbrella header "Pods-RoomDecoratorMyAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
