@@ -424,6 +424,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate,ARSessionDelegate {
     //MARK: - Find Node at Location
     func findNodeAtLocation(at location : CGPoint)-> VirtualNode?{
         let results = sceneView.hitTest(location, types: .existingPlaneUsingExtent)
+        //use existingPlaneUsingGeometry for best results can use
         
         // closest hit anchor
         guard let anchor = results.first?.anchor else {return nil}
@@ -533,6 +534,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate,ARSessionDelegate {
     // MARK: - ARSCNViewDelegate
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         print("didAdd called")
+        lblTrackingStatus.isHidden  = true
+
         //guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         //planeAnchor.addPlaneNode(on: node, contents: UIColor.clear)
         var objectVisible = false
@@ -567,9 +570,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate,ARSessionDelegate {
         
         switch camera.trackingState {
         case .notAvailable, .limited:
+            lblTrackingStatus.isHidden  = false
             lblTrackingStatus.text = camera.trackingState.presentationString
         case .normal:
             // Unhide content after successful relocalization.
+            lblTrackingStatus.isHidden  = false
             lblTrackingStatus.text = camera.trackingState.presentationString
          }
     }

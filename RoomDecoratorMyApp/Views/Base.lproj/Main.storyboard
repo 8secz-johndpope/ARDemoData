@@ -67,7 +67,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wb5-dZ-ePv">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wb5-dZ-ePv">
                                 <rect key="frame" x="369" y="76" width="64" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="kxj-iR-H8e"/>
@@ -79,10 +79,9 @@
                                 </state>
                                 <connections>
                                     <action selector="action_SaveMyDecoration:" destination="kFX-4B-Hs2" eventType="touchUpInside" id="iuz-Ve-kNx"/>
-                                    <action selector="action_renderPlaneOnWall:" destination="kFX-4B-Hs2" eventType="touchUpInside" id="KsI-4U-c14"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDQ-Oa-YQg">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDQ-Oa-YQg">
                                 <rect key="frame" x="5" y="75" width="73" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="eOo-B9-MNt"/>
@@ -170,6 +169,17 @@
                                 </state>
                                 <connections>
                                     <segue destination="VlO-fr-nUO" kind="show" id="L1h-yY-86c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUv-nl-XEA">
+                                <rect key="frame" x="117" y="482" width="138" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.84767648959999997" green="0.84767648959999997" blue="0.84767648959999997" alpha="0.42481844190000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Exibition">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="h55-xd-Cog" kind="show" id="AtT-Ol-ryZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -281,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRj-F7-Gzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2748" y="-90"/>
+            <point key="canvasLocation" x="3073" y="-84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="no2-Ow-VE8">
@@ -423,6 +433,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xr2-u1-j9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958.90410958904113" y="475.78124999999994"/>
+        </scene>
+        <!--Exibition View Controller-->
+        <scene sceneID="zy0-4h-mth">
+            <objects>
+                <viewController id="h55-xd-Cog" customClass="ExibitionViewController" customModule="RoomDecoratorMyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HVg-8l-TTp">
+                        <rect key="frame" x="0.0" y="0.0" width="438" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTC-KV-JiF">
+                                <rect key="frame" x="0.0" y="70" width="438" height="954"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="69P-M2-I0X" firstAttribute="bottom" secondItem="mTC-KV-JiF" secondAttribute="bottom" id="Es2-5Y-Iud"/>
+                            <constraint firstItem="69P-M2-I0X" firstAttribute="trailing" secondItem="mTC-KV-JiF" secondAttribute="trailing" id="Zel-dU-eHD"/>
+                            <constraint firstItem="mTC-KV-JiF" firstAttribute="leading" secondItem="69P-M2-I0X" secondAttribute="leading" id="b5a-R4-XiI"/>
+                            <constraint firstItem="mTC-KV-JiF" firstAttribute="top" secondItem="69P-M2-I0X" secondAttribute="top" id="cEQ-J0-Ckx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="69P-M2-I0X"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="mTC-KV-JiF" id="g1g-U9-Pf2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AU8-kg-ZyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2286" y="-291"/>
         </scene>
         <!--WallID View Controller-->
         <scene sceneID="NL7-Dy-YFO">
@@ -590,9 +629,9 @@
                                 </connections>
                             </button>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fws-Cm-VAm" userLabel="Mapping Status View">
-                                <rect key="frame" x="172" y="86" width="94" height="98"/>
+                                <rect key="frame" x="172" y="86" width="94" height="97.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="53W-Q6-Rel">
-                                    <rect key="frame" x="0.0" y="0.0" width="94" height="98"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="97.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mapping: Limited Tracking: Initializing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8X-U3-4ah">

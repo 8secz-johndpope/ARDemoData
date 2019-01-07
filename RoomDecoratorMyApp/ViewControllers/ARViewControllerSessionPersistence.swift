@@ -77,6 +77,7 @@ class ARViewControllerSessionPersistence: UIViewController {
         
     }
     
+    // to save , you need to select both frame and image
     /// - Tag: GetWorldMap
     @IBAction func saveExperience(_ button: UIButton) {
         DispatchQueue.main.async {
@@ -415,7 +416,8 @@ class ARViewControllerSessionPersistence: UIViewController {
         let heightInMtrs = ((currentNode.nodeInfo?.nodeHeight)! * 0.0254)
         
         let frameNode = SCNNode(geometry: SCNPlane(width: widthInMtrs , height: heightInMtrs))
-        frameNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: (currentNode.nodeInfo?.nodeFrameImage)!)!
+        guard let  image = currentNode.nodeInfo?.nodeFrameImage else {return}
+        frameNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: image)!
         frameNode.name = FRAME_NAME
         
         
