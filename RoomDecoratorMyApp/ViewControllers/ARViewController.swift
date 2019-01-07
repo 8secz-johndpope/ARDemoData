@@ -58,10 +58,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate,ARSessionDelegate {
         super.viewDidLoad()
         
         
-        let db = Firestore.firestore()
-        let settings = db.settings
-        settings.areTimestampsInSnapshotsEnabled = true
-        db.settings = settings
+//        let db = Firestore.firestore()
+//        let settings = db.settings
+//        settings.areTimestampsInSnapshotsEnabled = true
+//        db.settings = settings
         
         
         // Create a new scene

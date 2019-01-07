@@ -91,6 +91,7 @@ class ExibitionViewController: UIViewController {
         photoRingNode.eulerAngles.y = (.pi/2)
         photoRingNode.renderingOrder = 200
         childNode?.addChildNode(photoRingNode)
+        
  //        let photoW: CGFloat       = 1.8
 //        let photoH: CGFloat       = photoW * 0.618
 //         let imageArray = [UIImage(named: "image001.png"),UIImage(named: "image002.png"),UIImage(named: "image003.png"),UIImage(named: "image004.png"),UIImage(named: "image005.png"),UIImage(named: "image006.png"),UIImage(named: "image007.png")]
