@@ -1,8 +1,7 @@
 # ARDemoData
 
-POC  has:
 
-using ARKit 2.0
+Using ARKit 2.0
 
 1) Wall Decoration :  To decorate wall by putting picture with frames of any size using Augmented Reality
 
