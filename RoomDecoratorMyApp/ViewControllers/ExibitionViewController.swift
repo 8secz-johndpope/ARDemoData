@@ -36,10 +36,9 @@ class ExibitionViewController: UIViewController {
         let hitResults = sceneView.hitTest(touchLocation, types: ARHitTestResult.ResultType.estimatedHorizontalPlane)
         if !hitResults.isEmpty{
         // add portal here
-            addExibitionRoom(hitResult: hitResults.first!)
-            
+             //addExibitionRoom(hitResult: hitResults.first!)
+             addPictures(hitResult: hitResults.first!)
         }
-        
     }
     
     
@@ -107,6 +106,42 @@ class ExibitionViewController: UIViewController {
 //            let boxNode = SCNNode(geometry: box)
 //            photoRingNode.addChildNode(boxNode)
 //        }
+    }
+    
+    func addPictures(hitResult : ARHitTestResult) {
+        
+        let wallNode = SCNNode(geometry: SCNPlane(width: 3.0, height: 0.03))
+        wallNode.geometry?.firstMaterial?.diffuse.contents =  UIColor.red
+        let tranform = hitResult.worldTransform
+        let planeXPosition = 0.0
+        let planeYPosition = tranform.columns.3.y
+        let planeZPosition = 0.0
+        wallNode.position = SCNVector3(planeXPosition,Double(planeYPosition),planeZPosition)
+        wallNode.eulerAngles.x = (.pi/2)
+        wallNode.eulerAngles.y = -0
+        self.sceneView.scene.rootNode.addChildNode(wallNode)
+        
+        let picXPosition = -1.0
+        let picYPosition = -1.5
+        let picZPosition = -1.5
+        
+        let imageArray = [UIImage(named: "image001.png"),UIImage(named: "image002.png"),UIImage(named: "image003.png"),UIImage(named: "image004.png"),UIImage(named: "image005.png"),UIImage(named: "image006.png"),UIImage(named: "image007.png")]
+        
+        for  (index,image) in imageArray.enumerated(){
+            let photoRingNode = SCNNode()
+ 
+           // photoRingNode.position = SCNVector3Make((Float((picXPosition) + 0.1)), Float(picYPosition), (Float(index) * Float(picZPosition) + 0.1))
+            photoRingNode.position = SCNVector3(picXPosition,(picYPosition * Double(index)) + 0.5,picZPosition)
+            photoRingNode.eulerAngles.y = (.pi/2)
+            wallNode.insertChildNode(photoRingNode, at: index)
+            
+            let photoNode = SCNNode(geometry:SCNPlane(width: 1.0, height: 1.0))
+            photoNode.geometry?.firstMaterial?.diffuse.contents = image
+            photoNode.position = SCNVector3Make(0, 0, 0.05)
+            photoNode.eulerAngles.z = -(.pi/2)
+            photoRingNode.addChildNode(photoNode)
+        }
+        
     }
 
     /*
